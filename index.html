@@ -4,1159 +4,576 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Afif Studio — Premium UI/UX Portfolio</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%233b82f6'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='%23070b14'/%3E%3Cpath d='M18 46L30 18H35L47 46H41L38 38H26L23 46H18ZM28 33H36L32 24L28 33Z' fill='url(%23g)'/%3E%3C/svg%3E">
+
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%233b82f6'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='%23070b14'/%3E%3Cpath d='M18 46L30 18H35L47 46H41L38 38H26L23 46H18ZM28 33H36L32 24L28 33Z' fill='url(%23g)'/%3E%3C/svg%3E">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
     }
 
-    :root {
-      --bg: #070b14;
-      --secondary: #0f172a;
-      --card: rgba(255,255,255,0.05);
-      --border: rgba(255,255,255,0.08);
-      --text: #ffffff;
-      --muted: #94a3b8;
-      --blue: #3b82f6;
-      --cyan: #06b6d4;
-      --glow: rgba(59,130,246,0.35);
+    :root{
+      --bg:#070b14;
+      --card:rgba(255,255,255,.05);
+      --border:rgba(255,255,255,.08);
+      --text:#fff;
+      --muted:#94a3b8;
+      --blue:#3b82f6;
+      --cyan:#06b6d4;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
       background:
-        radial-gradient(circle at top left, rgba(59,130,246,0.2), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(6,182,212,0.15), transparent 30%);
-      pointer-events: none;
-      z-index: -2;
+      radial-gradient(circle at top left, rgba(59,130,246,.18), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(6,182,212,.14), transparent 30%);
+      z-index:-1;
+      pointer-events:none;
     }
 
-    .blur {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: .2;
-      z-index: -1;
+    .container{
+      width:min(1200px,92%);
+      margin:auto;
     }
 
-    .blur.one {
-      background: #3b82f6;
-      top: -200px;
-      left: -200px;
+    nav{
+      position:sticky;
+      top:0;
+      z-index:999;
+      backdrop-filter:blur(18px);
+      background:rgba(7,11,20,.7);
+      border-bottom:1px solid rgba(255,255,255,.05);
     }
 
-    .blur.two {
-      background: #06b6d4;
-      bottom: -200px;
-      right: -200px;
+    .nav-wrapper{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:20px 0;
     }
 
-    .container {
-      width: min(1200px, 92%);
-      margin: auto;
+    .logo{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:1.4rem;
+      font-weight:700;
     }
 
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      backdrop-filter: blur(18px);
-      background: rgba(7,11,20,0.65);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+    .logo span{
+      color:var(--blue);
     }
 
-    .nav-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 0;
+    .nav-links{
+      display:flex;
+      gap:28px;
+      align-items:center;
     }
 
-    .logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: -.5px;
+    .nav-links a{
+      text-decoration:none;
+      color:var(--muted);
+      transition:.3s ease;
+      position:relative;
+      padding:6px 0;
     }
 
-    .logo span {
-      color: var(--blue);
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-2px;
+      width:0%;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(to right,#60a5fa,#22d3ee);
+      transition:.3s ease;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      align-items: center;
+    .nav-links a:hover{
+      color:white;
     }
 
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      transition: .35s ease;
-      font-size: .95rem;
-      position: relative;
-      padding: 6px 0;
+    .nav-links a:hover::after{
+      width:100%;
     }
 
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 0%;
-      height: 1.5px;
-      border-radius: 999px;
-      background: linear-gradient(to right, #60a5fa, #22d3ee);
-      transition: .35s ease;
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 24px;
+      border-radius:999px;
+      text-decoration:none;
+      color:white;
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+      border:1px solid rgba(255,255,255,.08);
+      transition:.35s ease;
+      font-weight:600;
+      box-shadow:0 0 30px rgba(59,130,246,.25);
     }
 
-    .nav-links a:hover {
-      color: white;
+    .btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 0 45px rgba(59,130,246,.4);
     }
 
-    .nav-links a:hover::after {
-      width: 100%;
+    .secondary-btn{
+      background:rgba(255,255,255,.04);
+      backdrop-filter:blur(20px);
+      box-shadow:none;
     }
 
-    .btn {
-      padding: 14px 24px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(135deg, var(--blue), var(--cyan));
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: .35s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: 0 0 30px rgba(59,130,246,0.25);
+    .glass-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(20px);
+      border-radius:28px;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 40px rgba(59,130,246,0.45);
+    section{
+      padding:120px 0;
     }
 
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
     }
 
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      align-items: center;
-      gap: 60px;
+    .hero-content{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      align-items:center;
+      gap:60px;
     }
 
-    .tag {
-      display: inline-flex;
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-      color: #cbd5e1;
-      margin-bottom: 28px;
-      backdrop-filter: blur(20px);
+    .tag{
+      display:inline-flex;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);
+      margin-bottom:28px;
+      color:#cbd5e1;
     }
 
-    .hero h1 {
-      font-size: clamp(3rem, 7vw, 5.8rem);
-      line-height: .95;
-      font-family: 'Space Grotesk', sans-serif;
-      margin-bottom: 26px;
-      letter-spacing: -3px;
+    .hero h1{
+      font-size:clamp(3rem,7vw,5.8rem);
+      line-height:.95;
+      letter-spacing:-3px;
+      font-family:'Space Grotesk',sans-serif;
+      margin-bottom:24px;
     }
 
-    .hero h1 span {
-      background: linear-gradient(to right, #fff, #60a5fa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .hero h1 span{
+      background:linear-gradient(to right,#fff,#60a5fa);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
 
-    .hero p {
-      color: var(--muted);
-      font-size: 1.1rem;
-      line-height: 1.9;
-      max-width: 650px;
-      margin-bottom: 36px;
+    .hero p{
+      color:var(--muted);
+      line-height:1.9;
+      margin-bottom:34px;
     }
 
-    .hero-buttons {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
+    .hero-buttons{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
     }
 
-    .secondary-btn {
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: none;
+    .hero-main-image{
+      position:relative;
+      overflow:hidden;
+      border-radius:36px;
+      border:1px solid rgba(255,255,255,.08);
+      background:#0f172a;
+      height:640px;
+      box-shadow:0 40px 90px rgba(0,0,0,.45);
+      transition:.4s ease;
     }
 
-    .glass-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(22px);
-      border-radius: 28px;
+    .hero-main-image:hover{
+      transform:translateY(-8px);
     }
 
-    .hero-preview {
-      padding: 0;
-      position: relative;
-      overflow: visible;
-      min-height: 700px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .hero-main-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center top;
     }
 
-    
-
-    .designer-ui {
-      position: relative;
-      width: 100%;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-image-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 620px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      isolation: isolate;
-    }
-
-    .hero-grid-dots {
-      position: absolute;
-      right: -26px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      z-index: 5;
-      opacity: .8;
-    }
-
-    .hero-grid-dots span {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.7);
-    }
-
-    .hero-grid-dots span:first-child {
-      background: #3b82f6;
-      box-shadow: 0 0 15px rgba(59,130,246,.7);
-    }
-
-    .hero-circle-accent {
-      position: absolute;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(59,130,246,.18), transparent 72%);
-      right: -50px;
-      bottom: -20px;
-      z-index: 1;
-      filter: blur(40px);
-      opacity: .7;
-    }
-
-    
-
-    
-
-    .hero-image-wrapper::before {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(37,99,235,.22), transparent 70%);
-      z-index: 0;
-      filter: blur(30px);
-    }
-
-      .hero-image-wrapper::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 40px;
-      border: 1px solid rgba(255,255,255,.04);
-      z-index: 1;
-    }
-
-    .hero-main-image {
-      width: 100%;
-      height: 640px;
-      border-radius: 38px;
-      overflow: hidden;
-      position: relative;
-      border: 1px solid rgba(255,255,255,.06);
-      background: #0b1120;
-      z-index: 2;
-      box-shadow: 0 40px 90px rgba(0,0,0,.45);
-      transition: .4s ease;
-    }
-
-    .hero-main-image:hover {
-      transform: translateY(-4px);
-    }
-
-    .hero-main-image:hover {
-      transform: perspective(1600px) rotateY(-2deg) rotateX(.5deg) translateY(-10px);
-      box-shadow: 0 50px 100px rgba(0,0,0,.45);
-    }
-
-    
-
-    .hero-main-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      filter: brightness(.98);
-      transform: scale(1.03);
-      transition: .6s ease;
-    }
-
-    .hero-main-image:hover img {
-      transform: scale(1.05);
-    }
-
-     .hero-main-image::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-      linear-gradient(to top, rgba(7,11,20,.58), rgba(7,11,20,.02)),
-      radial-gradient(circle at top right, rgba(59,130,246,.14), transparent 36%);
-      z-index: 3;
-    }
-
-    .hero-main-image::after {
-      content: "";
-      position: absolute;
-      inset: 14px;
-      border-radius: 30px;
-      border: 1px solid rgba(255,255,255,.05);
-      z-index: 4;
-    }
-
-    .hero-orbit-line {
-      position: absolute;
-      width: 700px;
-      height: 320px;
-      border: 1px solid rgba(99,102,241,.08);
-      border-radius: 50%;
-      top: 54%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-8deg);
-      z-index: 1;
-      opacity: .4;
-    }
-
-    .hero-orbit-dot {
-      position: absolute;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      z-index: 2;
-    }
-
-    .hero-orbit-dot.one {
-      left: 40px;
-      bottom: 120px;
-      background: #8b5cf6;
-      box-shadow: 0 0 20px rgba(139,92,246,.8);
-    }
-
-    .hero-orbit-dot.two {
-      right: 40px;
-      bottom: 20px;
-      background: #a855f7;
-      box-shadow: 0 0 20px rgba(168,85,247,.8);
-    }
-
-    .hero-ui-card {
-      position: absolute;
-      z-index: 5;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 16px;
-      border-radius: 22px;
-      backdrop-filter: blur(18px);
-      background: rgba(15,23,42,.42);
-      border: 1px solid rgba(255,255,255,.06);
-      box-shadow: 0 10px 30px rgba(0,0,0,.22);
-      animation: float 5s ease-in-out infinite;
-    }
-
-    .hero-ui-card .icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(59,130,246,.18), rgba(139,92,246,.12));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: .9rem;
-    }
-
-    .hero-ui-card .line {
-      width: 70px;
-      height: 3px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.12);
-      margin-top: 6px;
-    }
-
-    .hero-ui-card h5 {
-      font-size: .92rem;
-      font-weight: 500;
-    }
-
-    .hero-ui-card.web {
-      left: -30px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .hero-ui-card.uiux {
-      right: -20px;
-      top: 90px;
-    }
-
-    .hero-ui-card.code {
-      right: -10px;
-      bottom: 70px;
-      animation-delay: 2s;
-    }
-
-    .hero-small-icon {
-      display: none;
-    }
-
-    .hero-image-content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 34px;
-      z-index: 2;
-    }
-
-    .hero-image-content span {
-      display: inline-flex;
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.08);
-      backdrop-filter: blur(20px);
-      color: #e2e8f0;
-      margin-bottom: 18px;
-      font-size: .9rem;
-    }
-
-    .hero-image-content h3 {
-      font-size: 2rem;
-      line-height: 1.2;
-      margin-bottom: 14px;
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    .hero-image-content p {
-      color: #cbd5e1;
-      line-height: 1.8;
-      font-size: .95rem;
-      margin: 0;
-    }
-
-    
-
-    @keyframes float {
-      0% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-12px);
-      }
-      100% {
-        transform: translateY(0px);
-      }
-    }
-
-    .hero-floating-stat {
-      position: absolute;
-      z-index: 5;
-      backdrop-filter: blur(20px);
-      background: rgba(15,23,42,.75);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 24px;
-      padding: 18px 22px;
-      box-shadow: 0 0 30px rgba(59,130,246,.15);
-      animation: float 5s ease-in-out infinite;
-    }
-
-    .hero-floating-stat.top {
-      top: 70px;
-      right: -10px;
-    }
-
-    .hero-floating-stat.bottom {
-      bottom: 60px;
-      left: -10px;
-      animation-delay: 2s;
-    }
-
-    .hero-floating-stat h4 {
-      font-size: 1.7rem;
-      margin-bottom: 6px;
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    .hero-floating-stat p {
-      margin: 0;
-      color: #cbd5e1;
-      font-size: .75rem;
-      line-height: 1.5;
-    }
-
-    .preview-window {
-      border-radius: 24px;
-      overflow: hidden;
-      background: #0f172a;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .preview-top {
-      display: flex;
-      gap: 8px;
-      padding: 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .preview-top span {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #334155;
-    }
-
-    .preview-body {
-      padding: 30px;
-      display: grid;
-      gap: 20px;
-    }
-
-    .mini-card {
-      height: 110px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(59,130,246,.18), rgba(6,182,212,.08));
-      border: 1px solid rgba(255,255,255,.06);
-    }
-
-    .hero-info-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      margin-top: 42px;
-      align-items: center;
-    }
-
-    .hero-info-strip span {
-      color: #cbd5e1;
-      font-size: .95rem;
-      position: relative;
-      padding-right: 20px;
-    }
-
-    .hero-info-strip span::after {
-      content: "•";
-      position: absolute;
-      right: 0;
-      color: rgba(255,255,255,.2);
-    }
-
-    .hero-info-strip span:last-child::after {
-      display: none;
-    }
-
-    .hero-info-strip strong {
-      color: white;
-      font-weight: 700;
-    }
-
-    section {
-      padding: 120px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 70px;
+    .section-title{
+      text-align:center;
+      margin-bottom:70px;
     }
 
-    .section-title h2 {
-      font-size: clamp(2rem, 5vw, 4rem);
-      font-family: 'Space Grotesk', sans-serif;
-      margin-bottom: 18px;
+    .section-title h2{
+      font-size:clamp(2rem,5vw,4rem);
+      margin-bottom:16px;
+      font-family:'Space Grotesk',sans-serif;
     }
 
-    .section-title p {
-      color: var(--muted);
-      max-width: 720px;
-      margin: auto;
-      line-height: 1.8;
+    .section-title p{
+      color:var(--muted);
+      line-height:1.8;
+      max-width:700px;
+      margin:auto;
     }
 
     .about-grid,
     .service-grid,
     .portfolio-grid,
-    .pricing-grid,
-    .testimonial-grid,
-    .faq-grid,
     .gallery-grid,
-    .footer-grid {
-      display: grid;
-      gap: 24px;
+    .testimonial-grid,
+    .pricing-grid,
+    .faq-grid,
+    .footer-grid{
+      display:grid;
+      gap:24px;
     }
 
-    .about-grid {
-      grid-template-columns: .72fr 1.28fr;
-      align-items: center;
-      gap: 54px;
+    .about-grid{
+      grid-template-columns:.72fr 1.28fr;
+      align-items:center;
+      gap:54px;
     }
 
-    .about-image {
-      min-height: 540px;
-      height: 540px;
-      max-width: 420px;
-      width: 100%;
-      margin: 0 auto;
-      position: relative;
-      overflow: hidden;
-      border-radius: 34px;
-      background: #0b1120;
-      border: 1px solid rgba(255,255,255,.05);
-      transition: .35s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      isolation: isolate;
-      box-shadow: 0 24px 70px rgba(0,0,0,.32);
+    .about-image{
+      overflow:hidden;
+      height:540px;
+      border-radius:34px;
     }
 
-    .about-image:hover {
-      transform: translateY(-6px);
+    .about-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transform:scale(1.1);
     }
 
-    .about-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      transform: scale(1.14);
-      filter: brightness(1.01) contrast(1.02);
-      z-index: 2;
-      transition: .5s ease;
-      display: block;
+    .about-content h3{
+      font-size:2.2rem;
+      margin-bottom:20px;
+      font-family:'Space Grotesk',sans-serif;
     }
 
-    .about-image:hover img {
-      transform: scale(1.17);
+    .about-content p{
+      color:var(--muted);
+      line-height:1.9;
+      margin-bottom:18px;
     }
 
-    .about-image::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-      linear-gradient(to top, rgba(7,11,20,.48), rgba(7,11,20,.04)),
-      radial-gradient(circle at top right, rgba(59,130,246,.12), transparent 34%);
-      z-index: 3;
+    .service-grid,
+    .portfolio-grid,
+    .testimonial-grid,
+    .pricing-grid,
+    .faq-grid{
+      grid-template-columns:repeat(3,1fr);
     }
 
-    .about-image::after {
-      content: "";
-      position: absolute;
-      inset: 12px;
-      border-radius: 26px;
-      border: 1px solid rgba(255,255,255,.04);
-      z-index: 4;
-      pointer-events: none;
-    }
-
-    .about-top-accent {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      right: 20px;
-      height: 72px;
-      border-radius: 22px;
-      z-index: 5;
-      backdrop-filter: blur(18px);
-      background: rgba(15,23,42,.42);
-      border: 1px solid rgba(255,255,255,.05);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 18px;
-    }
-
-    .about-top-profile {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .about-top-profile img {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      object-fit: cover;
-      border: 1px solid rgba(255,255,255,.06);
-    }
-
-    .about-top-profile div h4 {
-      font-size: .88rem;
-      margin-bottom: 2px;
-      font-weight: 500;
-    }
-
-    .about-top-profile div p {
-      color: #94a3b8;
-      font-size: .72rem;
-    }
-
-    .about-top-dots {
-      display: flex;
-      gap: 10px;
-    }
-
-    .about-top-dots span {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.14);
-    }
-
-    .about-noise {
-      display: none;
-    }
-
-    .about-badge {
-      display: none;
-    }
-
-    .about-badge.top {
-      top: 18px;
-      left: 18px;
-    }
-
-    .about-badge.bottom {
-      bottom: 18px;
-      right: 18px;
-    }
-
-    .about-line {
-      display: none;
-    }
-
-    .about-content {
-      padding: 20px;
-    }
-
-    .about-content h3 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-      font-family: 'Space Grotesk';
-    }
-
-    .about-content p {
-      color: var(--muted);
-      line-height: 1.9;
-      margin-bottom: 18px;
-    }
-
-    .service-grid {
-      grid-template-columns: repeat(3,1fr);
+    .gallery-grid{
+      grid-template-columns:repeat(4,1fr);
     }
 
     .service-card,
-    .portfolio-card,
     .pricing-card,
     .testimonial-card,
-    .faq-card {
-      padding: 30px;
-      transition: .35s ease;
-      position: relative;
-      overflow: hidden;
+    .faq-card,
+    .portfolio-card{
+      padding:30px;
+      transition:.35s ease;
+      position:relative;
+      overflow:hidden;
     }
 
     .service-card:hover,
-    .portfolio-card:hover,
     .pricing-card:hover,
     .testimonial-card:hover,
-    .faq-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(59,130,246,.35);
-      box-shadow: 0 0 40px rgba(59,130,246,.12);
+    .faq-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(59,130,246,.28);
+      box-shadow:0 0 40px rgba(59,130,246,.12);
     }
 
-    .service-icon {
-      width: 62px;
-      height: 62px;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, rgba(59,130,246,.22), rgba(6,182,212,.15));
-      margin-bottom: 24px;
-      font-size: 1.3rem;
+    .service-icon{
+      width:62px;
+      height:62px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg, rgba(59,130,246,.22), rgba(6,182,212,.12));
+      margin-bottom:24px;
+      font-size:1.3rem;
     }
 
-    .service-card h3 {
-      margin-bottom: 16px;
-      font-size: 1.3rem;
+    .service-card h3,
+    .pricing-card h3{
+      margin-bottom:14px;
     }
 
     .service-card p,
     .pricing-card p,
-    .testimonial-card p,
-    .faq-card p {
-      color: var(--muted);
-      line-height: 1.8;
+    .faq-card p,
+    .testimonial-card p{
+      color:var(--muted);
+      line-height:1.8;
     }
 
-    .portfolio-grid {
-      grid-template-columns: repeat(3,1fr);
+    .portfolio-card{
+      min-height:340px;
+      display:flex;
+      align-items:flex-end;
+      background-size:cover;
+      background-position:center;
     }
 
-    .portfolio-card {
-      min-height: 340px;
-      display: flex;
-      align-items: end;
-      background-size: cover;
-      background-position: center;
+    .portfolio-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(7,11,20,.82), rgba(7,11,20,.08) 55%, transparent);
+      z-index:1;
     }
 
-    .portfolio-overlay {
-      width: 100%;
-      padding: 0;
-      background: transparent;
-      backdrop-filter: none;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
+    .portfolio-overlay{
+      position:relative;
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
     }
 
-    .portfolio-card {
-      position: relative;
-      overflow: hidden;
+    .portfolio-overlay span{
+      font-size:.8rem;
+      color:#dbeafe;
+      text-transform:uppercase;
+      letter-spacing:.4px;
     }
 
-    .portfolio-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(7,11,20,.82), rgba(7,11,20,.08) 55%, transparent);
-      z-index: 1;
+    .portfolio-overlay h3{
+      font-size:1.4rem;
+      font-family:'Space Grotesk',sans-serif;
+      max-width:260px;
     }
 
-    .portfolio-overlay,
-    .portfolio-overlay * {
-      position: relative;
-      z-index: 2;
+    .portfolio-link{
+      margin-top:8px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 16px;
+      border-radius:999px;
+      text-decoration:none;
+      color:white;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(20px);
+      width:max-content;
+      transition:.3s ease;
     }
 
-    .portfolio-overlay span {
-      color: #dbeafe;
-      font-size: .82rem;
-      letter-spacing: .3px;
-      text-transform: uppercase;
-      font-weight: 600;
+    .portfolio-link:hover{
+      background:rgba(255,255,255,.14);
     }
 
-    .portfolio-overlay h3 {
-      font-size: 1.45rem;
-      line-height: 1.3;
-      font-family: 'Space Grotesk', sans-serif;
-      max-width: 260px;
+    .gallery-item{
+      aspect-ratio:1/1;
+      border-radius:24px;
+      overflow:hidden;
+      background-size:cover;
+      background-position:center;
+      transition:.35s ease;
+      border:1px solid rgba(255,255,255,.06);
     }
 
-    .gallery-grid {
-      grid-template-columns: repeat(4,1fr);
+    .gallery-item:hover{
+      transform:translateY(-6px) scale(1.02);
     }
 
-    .gallery-item {
-      aspect-ratio: 1/1;
-      border-radius: 24px;
-      overflow: hidden;
-      background-color: #0f172a;
-      background: linear-gradient(135deg, rgba(59,130,246,.18), rgba(6,182,212,.06));
-      border: 1px solid rgba(255,255,255,.06);
-      transition: .35s ease;
+    .testimonial-card::before{
+      content:'“';
+      position:absolute;
+      top:18px;
+      right:24px;
+      font-size:5rem;
+      color:rgba(255,255,255,.05);
     }
 
-    .gallery-item:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 25px 50px rgba(0,0,0,.28);
+    .testimonial-profile{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:20px;
     }
 
-    .testimonial-grid,
-    .pricing-grid,
-    .faq-grid {
-      grid-template-columns: repeat(3,1fr);
+    .testimonial-avatar{
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg, rgba(59,130,246,.25), rgba(6,182,212,.15));
     }
 
-    .testimonial-card {
-      position: relative;
-      padding: 34px;
-      border-radius: 30px;
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid rgba(255,255,255,.06);
+    .testimonial-stars{
+      margin-top:20px;
+      color:#60a5fa;
     }
 
-    .testimonial-card::before {
-      content: "“";
-      position: absolute;
-      top: 18px;
-      right: 24px;
-      font-size: 5rem;
-      font-family: serif;
-      color: rgba(255,255,255,.05);
-      line-height: 1;
+    .price{
+      font-size:2.5rem;
+      font-weight:700;
+      margin-bottom:18px;
     }
 
-    .testimonial-profile {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 22px;
+    .pricing-list{
+      display:grid;
+      gap:14px;
+      margin:28px 0;
+      color:#cbd5e1;
     }
 
-    .testimonial-avatar {
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(59,130,246,.25), rgba(6,182,212,.15));
-      border: 1px solid rgba(255,255,255,.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 1rem;
-      color: white;
+    .faq-card::before{
+      content:'FAQ';
+      position:absolute;
+      top:24px;
+      right:24px;
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:.72rem;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.06);
+      color:rgba(255,255,255,.7);
     }
 
-    .testimonial-profile h4 {
-      font-size: 1rem;
-      margin-bottom: 4px;
+    .faq-card h3{
+      margin-bottom:14px;
+      max-width:82%;
+      line-height:1.5;
+      font-family:'Space Grotesk',sans-serif;
     }
 
-    .testimonial-profile span {
-      color: #94a3b8;
-      font-size: .82rem;
+    .cta{
+      text-align:center;
+      padding:90px 40px;
     }
 
-    .testimonial-stars {
-      display: flex;
-      gap: 4px;
-      margin-top: 22px;
-      color: #60a5fa;
-      font-size: .95rem;
+    .cta h2{
+      font-size:clamp(2rem,5vw,4rem);
+      margin-bottom:20px;
+      font-family:'Space Grotesk',sans-serif;
     }
 
-    .pricing-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 16px;
+    .cta p{
+      color:var(--muted);
+      max-width:700px;
+      margin:0 auto 34px;
+      line-height:1.8;
     }
 
-    .price {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 20px;
+    footer{
+      padding:80px 0 40px;
+      border-top:1px solid rgba(255,255,255,.05);
     }
 
-    .pricing-list {
-      display: grid;
-      gap: 14px;
-      margin: 28px 0;
-      color: #cbd5e1;
+    .footer-grid{
+      grid-template-columns:1.5fr .9fr 1.1fr;
+      gap:70px;
+      margin-bottom:50px;
     }
 
-    .faq-card {
-      position: relative;
-      padding: 34px;
-      border-radius: 30px;
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid rgba(255,255,255,.06);
-      overflow: hidden;
-      transition: .35s ease;
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
     }
 
-    .faq-card::before {
-      content: "FAQ";
-      position: absolute;
-      top: 24px;
-      right: 28px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.06);
-      color: rgba(255,255,255,.72);
-      font-size: .72rem;
-      letter-spacing: .8px;
-      font-weight: 600;
-      backdrop-filter: blur(20px);
+    .footer-links a,
+    .footer-brand p{
+      color:var(--muted);
+      text-decoration:none;
+      line-height:1.9;
     }
 
-    .faq-card h3 {
-      margin-bottom: 16px;
-      font-size: 1.2rem;
-      line-height: 1.5;
-      max-width: 82%;
-      font-family: 'Space Grotesk', sans-serif;
+    .footer-bottom{
+      padding-top:30px;
+      border-top:1px solid rgba(255,255,255,.05);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      color:var(--muted);
+      flex-wrap:wrap;
     }
 
-    .faq-card p {
-      color: #94a3b8;
-      line-height: 1.85;
-      font-size: .94rem;
-      max-width: 92%;
+    .footer-policy{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
     }
 
-    .faq-card:hover::before {
-      background: rgba(59,130,246,.12);
-      border-color: rgba(59,130,246,.18);
-      color: white;
+    .footer-policy a{
+      color:var(--muted);
+      text-decoration:none;
+      transition:.3s ease;
+      font-size:.94rem;
     }
 
-    .cta {
-      text-align: center;
-      padding: 90px 40px;
-      position: relative;
-      overflow: hidden;
+    .footer-policy a:hover{
+      color:white;
     }
 
-    .cta h2 {
-      font-size: clamp(2rem, 5vw, 4rem);
-      font-family: 'Space Grotesk';
-      margin-bottom: 20px;
+    .reveal{
+      opacity:0;
+      transform:translateY(40px);
+      transition:1s ease;
     }
 
-    .cta p {
-      color: var(--muted);
-      max-width: 700px;
-      margin: auto auto 36px;
-      line-height: 1.8;
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
     }
 
-    footer {
-      padding: 80px 0 40px;
-      border-top: 1px solid rgba(255,255,255,.05);
-    }
-
-    .footer-grid {
-      grid-template-columns: 1.5fr 1fr 1fr;
-      margin-bottom: 50px;
-    }
-
-    .footer-brand p,
-    .footer-links a {
-      color: var(--muted);
-      line-height: 1.9;
-      text-decoration: none;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .footer-bottom {
-      padding-top: 30px;
-      border-top: 1px solid rgba(255,255,255,.05);
-      color: var(--muted);
-      text-align: center;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 1s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 1100px) {
+    @media(max-width:1100px){
       .hero-content,
       .about-grid,
       .service-grid,
       .portfolio-grid,
       .gallery-grid,
-      .pricing-grid,
       .testimonial-grid,
+      .pricing-grid,
       .faq-grid,
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .stats {
-        grid-template-columns: repeat(2,1fr);
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
       }
     }
 
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding: 120px 0 80px;
+    @media(max-width:768px){
+      .nav-links{
+        display:none;
       }
 
       .hero-content,
@@ -1164,521 +581,407 @@
       .service-grid,
       .portfolio-grid,
       .gallery-grid,
-      .pricing-grid,
       .testimonial-grid,
+      .pricing-grid,
       .faq-grid,
-      .footer-grid,
-      .stats {
-        grid-template-columns: 1fr;
+      .footer-grid{
+        grid-template-columns:1fr;
       }
 
-      .hero h1 {
-        letter-spacing: -2px;
+      section{
+        padding:90px 0;
       }
 
-      .hero-buttons {
-        flex-direction: column;
+      .hero{
+        padding:120px 0 80px;
       }
 
-      .btn {
-        width: 100%;
+      .hero-buttons{
+        flex-direction:column;
       }
 
-      section {
-        padding: 90px 0;
+      .btn{
+        width:100%;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="blur one"></div>
-  <div class="blur two"></div>
+<nav>
+  <div class="container nav-wrapper">
+    <div class="logo">Afif <span>Studio</span></div>
 
-  <nav>
-    <div class="container nav-wrapper">
-      <div class="logo">Afif <span>Studio</span></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
 
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
+    <a href="https://wa.me/+62895384266670" target="_blank" class="btn">Start Project</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-text reveal active">
+      <div class="tag">Modern UI/UX Designer & Creative Developer</div>
+
+      <h1>Crafting <span>Modern Digital</span> Experiences.</h1>
+
+      <p>
+        I design modern, clean, and impactful interfaces for startups, businesses, and brands that want to stand out digitally with premium user experiences.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#portfolio" class="btn">View Portfolio</a>
+        <a href="https://wa.me/+62895384266670" target="_blank" class="btn secondary-btn">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="hero-main-image reveal active">
+      <img src="https://media.discordapp.net/attachments/1005757707652960256/1505799698982768740/hilang.png?ex=6a0bf0c0&is=6a0a9f40&hm=c4b7555411e80f8ed917b7298237286a182441a11e78a9c15c70bc795cf26dde&=&format=webp&quality=lossless&width=963&height=545" alt="Afif Studio">
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>Services</h2>
+      <p>Premium digital solutions crafted for startups and modern brands.</p>
+    </div>
+
+    <div class="service-grid">
+      <div class="service-card glass-card reveal">
+        <div class="service-icon">🎨</div>
+        <h3>UI/UX Design</h3>
+        <p>Modern and user-focused interface designs with premium aesthetics.</p>
       </div>
 
-      <a href="#contact" class="btn">Start Project</a>
+      <div class="service-card glass-card reveal">
+        <div class="service-icon">💻</div>
+        <h3>Landing Page Website</h3>
+        <p>Modern landing page websites for startups, brands, and businesses.</p>
+      </div>
+
+      <div class="service-card glass-card reveal">
+        <div class="service-icon">🖌️</div>
+        <h3>Graphic Design</h3>
+        <p>Supporting visuals that strengthen your digital brand identity.</p>
+      </div>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <section class="hero">
-    <div class="container hero-content">
-      <div class="hero-text reveal">
-        <div class="tag">Modern UI/UX Designer & Creative Developer</div>
+<section id="portfolio">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>Featured Portfolio</h2>
+      <p>Selected digital experiences crafted with premium aesthetics and startup-focused visual design.</p>
+    </div>
 
-        <h1>
-          Crafting <span>Modern Digital</span> Experiences.
-        </h1>
+    <div class="portfolio-grid">
+      <div class="portfolio-card glass-card reveal" style="background-image:url('https://media.discordapp.net/attachments/1005757707652960256/1505816041752887316/77e4d77e118c0a3c3fc29ef661cb3002.png?ex=6a0bfff9&is=6a0aae79&hm=6dde535a1518b721c93dc43ca2df03b48002f149e1917650b35d508658689b4c&=&format=webp&quality=lossless&width=758&height=569'); background-size:154%; background-position:center -48px;">
+        <div class="portfolio-overlay">
+          <span>Landing Page</span>
+          <h3>Webinar Website</h3>
+          <a class="portfolio-link" href="https://dribbble.com/shots/27007696-Webinar-Landing-Page-Octora-Digital" target="_blank">View Details ↗</a>
+        </div>
+      </div>
 
-        <p>
-          I design modern, clean, and impactful interfaces for startups, businesses, and brands that want to stand out digitally with premium user experiences.
+      <div class="portfolio-card glass-card reveal" style="background-image:url('https://media.discordapp.net/attachments/1005757707652960256/1505811567114194995/e8997d4326b569086d4a6c8989c49633.png?ex=6a0bfbce&is=6a0aaa4e&hm=736effd9859c82b7e16a3991287b41acbe2047eb5972a029487c332d4d271917&=&format=webp&quality=lossless&width=505&height=649'); background-position:center -110px;">
+        <div class="portfolio-overlay">
+          <span>Learning Subscription App</span>
+          <h3>Manage Plan & Payment Flow UI</h3>
+          <a class="portfolio-link" href="https://dribbble.com/shots/27055898-Learning-Subscription-App-Manage-Plan-Payment-Flow-UI" target="_blank">View Details ↗</a>
+        </div>
+      </div>
+
+      <div class="portfolio-card glass-card reveal" style="background-image:url('https://media.discordapp.net/attachments/1005757707652960256/1505815490533003264/bca9fbd8c1d1ba7ddb32208662b7046a.png?ex=6a0bff75&is=6a0aadf5&hm=2e208289226f97e9130a41f1f83237f08ba93c52a88d60970d108a08cd8dedb6&=&format=webp&quality=lossless&width=817&height=545');">
+        <div class="portfolio-overlay">
+          <span>Dashboard Interface</span>
+          <h3>Analytics & Data Monitoring UI</h3>
+          <a class="portfolio-link" href="https://dribbble.com/shots/27161688-Octora-Digital-Employee-Health-Monitoring-Dashboard" target="_blank">View Details ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>Visual Gallery</h2>
+      <p>A curated collection of modern UI inspiration, dashboard interfaces, creative layouts, and visual concepts crafted with clean aesthetics and strong digital branding vibes.</p>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <div class="gallery-item" style="background-image:url('https://media.discordapp.net/attachments/1005757707652960256/1505819574560624690/original-72770530a2317edf6d37ff7ec513a287.png?ex=6a0c0343&is=6a0ab1c3&hm=97eca935b993f177de5142e454a73116b200aafebe410dad445feba84bed881d&=&format=webp&quality=lossless&width=817&height=545');"></div>
+
+      <div class="gallery-item" style="background-image:url('https://media.discordapp.net/attachments/1005757707652960256/1505819529429651507/original-f7ceea6bed80d85bd9c9c1293b10780e.png?ex=6a0c0338&is=6a0ab1b8&hm=42a6c71869c4a3819cf529c4ec900f522663c3498c0704062c45a6a4414f4b63&=&format=webp&quality=lossless&width=649&height=649');"></div>
+
+      <div class="gallery-item" style="background-image:url('https://media.discordapp.net/attachments/1005757707652960256/1505819457162055760/original-f1c0dd90aaf294a1fcb013e3a35b2e80.png?ex=6a0c0327&is=6a0ab1a7&hm=8f9fa2e82e073d969099c2f1edbc4de0770a49224d9a2af954c581b48169e3fd&=&format=webp&quality=lossless&width=758&height=551');"></div>
+
+      <div class="gallery-item" style="background-image:url('https://media.discordapp.net/attachments/1005757707652960256/1505819935949979758/original-b9b5ef17b3eef09dcc6b78351e907d34.png?ex=6a0c0399&is=6a0ab219&hm=038bee3aefeaeca4cd09392bd33318f12952f277e01b685fccd7f35c1ebe7cdc&=&format=webp&quality=lossless&width=909&height=545');"></div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>Client Testimonials</h2>
+      <p>Trusted by startups, creators, and modern digital brands.</p>
+    </div>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card glass-card reveal">
+        <div class="testimonial-profile">
+          <div class="testimonial-avatar">AR</div>
+          <div>
+            <h4>Alex Raymond</h4>
+            <span>Startup Founder</span>
+          </div>
+        </div>
+
+        <p>“The final landing page feels incredibly modern and premium. The design quality honestly exceeded our expectations.”</p>
+
+        <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+      </div>
+
+      <div class="testimonial-card glass-card reveal">
+        <div class="testimonial-profile">
+          <div class="testimonial-avatar">JN</div>
+          <div>
+            <h4>Jason Neo</h4>
+            <span>Digital Product Owner</span>
+          </div>
+        </div>
+
+        <p>“Communication was smooth, revisions were fast, and the UI result looked clean like a real startup product.”</p>
+
+        <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+      </div>
+
+      <div class="testimonial-card glass-card reveal">
+        <div class="testimonial-profile">
+          <div class="testimonial-avatar">SM</div>
+          <div>
+            <h4>Sarah Miller</h4>
+            <span>Creative Brand Manager</span>
+          </div>
+        </div>
+
+        <p>“One of the cleanest portfolio and dashboard design styles we’ve worked with. Minimal, modern, and very professional.”</p>
+
+        <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>Pricing</h2>
+      <p>Flexible packages for startups, personal brands, and modern businesses.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card glass-card reveal">
+        <h3>Basic</h3>
+        <div class="price">Rp500K</div>
+        <p>Perfect for personal brands and simple landing pages.</p>
+
+        <div class="pricing-list">
+          <span>✔ Modern Landing Page Design</span>
+          <span>✔ Responsive Mobile Layout</span>
+          <span>✔ Clean UI Section</span>
+          <span>✔ Basic Scroll Animation</span>
+          <span>✔ 2x Revision</span>
+        </div>
+
+        <a href="https://wa.me/+62895384266670" target="_blank" class="btn">Get Started</a>
+      </div>
+
+      <div class="pricing-card glass-card reveal" style="transform:scale(1.03);border-color:rgba(59,130,246,.28);box-shadow:0 0 40px rgba(59,130,246,.12);">
+        <h3>Standard</h3>
+        <div class="price">Rp800K</div>
+        <p>Ideal for startups needing premium visuals and stronger website experience.</p>
+
+        <div class="pricing-list">
+          <span>✔ Premium Landing Page Website</span>
+          <span>✔ Modern UI/UX Experience</span>
+          <span>✔ Smooth Scroll Animation</span>
+          <span>✔ Responsive All Devices</span>
+          <span>✔ Fast Performance Optimization</span>
+          <span>✔ 4x Revision</span>
+        </div>
+
+        <a href="https://wa.me/+62895384266670" target="_blank" class="btn">Get Started</a>
+      </div>
+
+      <div class="pricing-card glass-card reveal">
+        <h3>Premium</h3>
+        <div class="price">Rp1.2JT</div>
+        <p>Complete premium startup experience with modern visuals and advanced interactions.</p>
+
+        <div class="pricing-list">
+          <span>✔ Full Premium Landing Page</span>
+          <span>✔ Advanced UI/UX Design</span>
+          <span>✔ Premium Visual Experience</span>
+          <span>✔ Custom Modern Sections</span>
+          <span>✔ Smooth Premium Animation</span>
+          <span>✔ SEO & Speed Optimization</span>
+          <span>✔ Priority Support</span>
+          <span>✔ Unlimited Revision</span>
+        </div>
+
+        <a href="https://wa.me/+62895384266670" target="_blank" class="btn">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>Frequently Asked Questions</h2>
+      <p>Everything you need to know before starting your project.</p>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-card glass-card reveal">
+        <h3>Do you also develop the website?</h3>
+        <p>Yes. Besides designing the interface, I can also build responsive modern landing page websites with clean frontend development.</p>
+      </div>
+
+      <div class="faq-card glass-card reveal">
+        <h3>Can I request revisions during the project?</h3>
+        <p>Absolutely. Revisions are included in every package to make sure the final result matches your vision and branding.</p>
+      </div>
+
+      <div class="faq-card glass-card reveal">
+        <h3>How long does a landing page project usually take?</h3>
+        <p>Most landing page projects are completed within a few days depending on the complexity and revisions needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="container">
+    <div class="glass-card cta reveal" style="margin-bottom:80px;">
+      <h2>Let’s Build Something Modern Together.</h2>
+      <p>
+        Need a clean landing page, premium UI design, or modern startup website? Let’s create a digital experience that actually stands out.
+      </p>
+
+      <div class="hero-buttons" style="justify-content:center; margin-top:10px;">
+        <a href="https://instagram.com" target="_blank" class="btn">Start Project</a>
+        <a href="https://dribbble.com" target="_blank" class="btn secondary-btn">View Dribbble</a>
+      </div>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:18px;">Afif <span>Studio</span></div>
+
+        <p style="padding-bottom:22px; margin-bottom:22px; border-bottom:1px solid rgba(255,255,255,.08);">
+          Crafting modern digital experiences with premium aesthetics, startup-level visuals, and clean interface design focused on user experience.
         </p>
 
-        <div class="hero-buttons">
-          <a href="#portfolio" class="btn">View Portfolio</a>
-          <a href="#contact" class="btn secondary-btn">Contact Us</a>
-        </div>
+        <div style="display:flex; flex-direction:column; gap:14px; margin-top:6px; color:#94a3b8; font-size:.95rem;">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span>Available for freelance projects</span>
+            <span style="width:6px;height:6px;border-radius:999px;background:#22c55e;display:inline-block;"></span>
+            <span>Open for selected projects</span>
+          </div>
 
-        <div class="hero-info-strip">
-          <span><strong>20+</strong> Completed Design Projects</span>
-          <span><strong>Modern</strong> UI/UX Interface Design</span>
-          <span><strong>100%</strong> Responsive Website Experience</span>
-          <span><strong>Fast</strong> & Friendly Communication</span>
-        </div>
-      </div>
-
-      <div class="hero-preview reveal">
-        <div class="designer-ui">
-          <div class="hero-image-wrapper">
-
-            <div class="hero-orbit-line"></div>
-            <div class="hero-circle-accent"></div>
-
-            <div class="hero-ui-card uiux">
-              <div class="icon">⌘</div>
-              <div>
-                <h5>UI / UX Design</h5>
-                <div class="line"></div>
-              </div>
-            </div>
-
-            <div class="hero-ui-card web">
-              <div class="icon">&lt;/&gt;</div>
-              <div>
-                <h5>Web Design</h5>
-                <div class="line"></div>
-              </div>
-            </div>
-
-            <div class="hero-ui-card code">
-              <div class="icon">⚡</div>
-              <div>
-                <h5>Vibe Coder</h5>
-                <div class="line"></div>
-              </div>
-            </div>
-
-            <div class="hero-main-image">
-
-              <img src="https://media.discordapp.net/attachments/1005757707652960256/1505799698982768740/hilang.png?ex=6a0bf0c0&is=6a0a9f40&hm=c4b7555411e80f8ed917b7298237286a182441a11e78a9c15c70bc795cf26dde&=&format=webp&quality=lossless&width=963&height=545" alt="Afif Studio Portrait">
-
-              
-
-            </div>
-
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="portfolio-link" style="padding:8px 14px; font-size:.82rem;">Modern UI/UX</span>
+            <span class="portfolio-link" style="padding:8px 14px; font-size:.82rem;">Landing Page</span>
+            <span class="portfolio-link" style="padding:8px 14px; font-size:.82rem;">Creative Developer</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  
-
-  <section id="about">
-    <div class="container">
-      <div class="section-title reveal">
-        <h2>About Me</h2>
-        <p>
-          Passionate about building clean, aesthetic, and modern digital experiences that help brands connect better with their audience.
-        </p>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-image glass-card reveal">
-          <img src="https://media.discordapp.net/attachments/1005757707652960256/1505799698982768740/hilang.png?ex=6a0bf0c0&is=6a0a9f40&hm=c4b7555411e80f8ed917b7298237286a182441a11e78a9c15c70bc795cf26dde&=&format=webp&quality=lossless&width=963&height=545" alt="About Afif Studio">
-        </div>
-
-        <div class="about-content reveal">
-          <h3>Designing Experiences That Feel Premium.</h3>
-
-          <p>
-            I'm a UI/UX designer focused on creating modern digital products with strong visual aesthetics, smooth interactions, and user-centered experiences.
-          </p>
-
-          <p>
-            From startup landing pages to modern web interfaces, I help brands and businesses build stronger digital presence with clean and impactful design.
-          </p>
-
-          <a href="#contact" class="btn">Start Project</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="services">
-    <div class="container">
-      <div class="section-title reveal">
-        <h2>Services</h2>
-        <p>
-          Premium digital solutions crafted for startups, brands, and businesses that want modern and impactful experiences.
-        </p>
-      </div>
-
-      <div class="service-grid">
-        <div class="service-card glass-card reveal">
-          <div class="service-icon">🎨</div>
-          <h3>UI/UX Design</h3>
-          <p>Modern and user-focused interface designs with clean visual hierarchy and premium aesthetics.</p>
-        </div>
-
-        <div class="service-card glass-card reveal">
-          <div class="service-icon">💻</div>
-          <h3>Landing Page Website</h3>
-          <p>Modern landing page websites designed and developed for startups, brands, and businesses with clean premium experiences.</p>
-        </div>
-
-        <div class="service-card glass-card reveal">
-          <div class="service-icon">🖌️</div>
-          <h3>Graphic Design</h3>
-          <p>Supporting visual assets and modern graphic design needs to strengthen your brand identity and digital presence.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="portfolio">
-    <div class="container">
-      <div class="section-title reveal">
-        <h2>Featured Portfolio</h2>
-        <p>
-          Selected digital experiences crafted with premium aesthetics, modern layouts, and startup-focused visual design.
-        </p>
-      </div>
-
-      <div class="portfolio-grid">
-        <div class="portfolio-card glass-card reveal" style="background-image:url('https://media.discordapp.net/attachments/1005757707652960256/1505816041752887316/77e4d77e118c0a3c3fc29ef661cb3002.png?ex=6a0bfff9&is=6a0aae79&hm=6dde535a1518b721c93dc43ca2df03b48002f149e1917650b35d508658689b4c&=&format=webp&quality=lossless&width=758&height=569'); background-size:154%; background-repeat:no-repeat; background-position:center -48px; background-color:#0f172a;">
-          <div class="portfolio-overlay">
-            <span>Landing Page</span>
-            <h3>Webinar Website</h3>
-
-            <a href="https://dribbble.com/shots/27007696-Webinar-Landing-Page-Octora-Digital" target="_blank" style="margin-top:10px;display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px);color:white;text-decoration:none;font-size:.9rem;font-weight:500;transition:.3s ease;box-shadow:0 10px 30px rgba(0,0,0,.18);">
-              View Details ↗
-            </a>
-          </div>
-        </div>
-
-        <div class="portfolio-card glass-card reveal" style="background-image:url('https://media.discordapp.net/attachments/1005757707652960256/1505811567114194995/e8997d4326b569086d4a6c8989c49633.png?ex=6a0bfbce&is=6a0aaa4e&hm=736effd9859c82b7e16a3991287b41acbe2047eb5972a029487c332d4d271917&=&format=webp&quality=lossless&width=505&height=649'); background-size:cover; background-repeat:no-repeat; background-position:center -110px; background-color:#0f172a;">
-          <div class="portfolio-overlay" style="padding-top:140px;">
-            <span>Learning Subscription App</span>
-            <h3>Manage Plan & Payment Flow UI</h3>
-
-            <a href="https://dribbble.com/shots/27055898-Learning-Subscription-App-Manage-Plan-Payment-Flow-UI" target="_blank" style="margin-top:18px;display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px);color:white;text-decoration:none;font-size:.9rem;font-weight:500;transition:.3s ease;">
-              View Details ↗
-            </a>
-          </div>
-        </div>
-
-        <div class="portfolio-card glass-card reveal" style="background-image:url('https://media.discordapp.net/attachments/1005757707652960256/1505815490533003264/bca9fbd8c1d1ba7ddb32208662b7046a.png?ex=6a0bff75&is=6a0aadf5&hm=2e208289226f97e9130a41f1f83237f08ba93c52a88d60970d108a08cd8dedb6&=&format=webp&quality=lossless&width=817&height=545'); background-size:cover; background-repeat:no-repeat; background-position:center top; background-color:#0f172a;">
-          <div class="portfolio-overlay">
-            <span>Dashboard Interface</span>
-            <h3>Analytics & Data Monitoring UI</h3>
-
-            <a href="https://dribbble.com/shots/27161688-Octora-Digital-Employee-Health-Monitoring-Dashboard" target="_blank" style="margin-top:18px;display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px);color:white;text-decoration:none;font-size:.9rem;font-weight:500;transition:.3s ease;">
-              View Details ↗
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="section-title reveal">
-        <h2>Visual Gallery</h2>
-        <p>
-          A curated collection of modern UI inspiration, dashboard interfaces, creative layouts, and visual concepts crafted with clean aesthetics and strong digital branding vibes.
-        </p>
-      </div>
-
-      <div class="gallery-grid reveal">
-        <div class="gallery-item" style="background-image:url('https://media.discordapp.net/attachments/1005757707652960256/1505819574560624690/original-72770530a2317edf6d37ff7ec513a287.png?ex=6a0c0343&is=6a0ab1c3&hm=97eca935b993f177de5142e454a73116b200aafebe410dad445feba84bed881d&=&format=webp&quality=lossless&width=817&height=545');background-size:cover;background-position:center;background-repeat:no-repeat;"></div>
-        <div class="gallery-item" style="background-image:url('https://media.discordapp.net/attachments/1005757707652960256/1505819529429651507/original-f7ceea6bed80d85bd9c9c1293b10780e.png?ex=6a0c0338&is=6a0ab1b8&hm=42a6c71869c4a3819cf529c4ec900f522663c3498c0704062c45a6a4414f4b63&=&format=webp&quality=lossless&width=649&height=649');background-size:cover;background-position:center;background-repeat:no-repeat;"></div>
-        <div class="gallery-item" style="background-image:url('https://media.discordapp.net/attachments/1005757707652960256/1505819457162055760/original-f1c0dd90aaf294a1fcb013e3a35b2e80.png?ex=6a0c0327&is=6a0ab1a7&hm=8f9fa2e82e073d969099c2f1edbc4de0770a49224d9a2af954c581b48169e3fd&=&format=webp&quality=lossless&width=758&height=551');background-size:cover;background-position:center;background-repeat:no-repeat;"></div>
-        <div class="gallery-item" style="background-image:url('https://media.discordapp.net/attachments/1005757707652960256/1505819935949979758/original-b9b5ef17b3eef09dcc6b78351e907d34.png?ex=6a0c0399&is=6a0ab219&hm=038bee3aefeaeca4cd09392bd33318f12952f277e01b685fccd7f35c1ebe7cdc&=&format=webp&quality=lossless&width=909&height=545');background-size:cover;background-position:center;background-repeat:no-repeat;"></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="section-title reveal">
-        <h2>Client Testimonials</h2>
-        <p>
-          Clean communication, premium quality, and modern experiences are always the main focus.
-        </p>
-      </div>
-
-      <div class="testimonial-grid">
-        <div class="testimonial-card glass-card reveal">
-          <div class="testimonial-profile">
-            <div class="testimonial-avatar">AR</div>
-            <div>
-              <h4>Alex Raymond</h4>
-              <span>Startup Founder</span>
-            </div>
-          </div>
-
-          <p>
-            “The final landing page feels incredibly modern and premium. The design quality honestly exceeded our expectations.”
-          </p>
-
-          <div class="testimonial-stars">
-            ★ ★ ★ ★ ★
-          </div>
-        </div>
-
-        <div class="testimonial-card glass-card reveal">
-          <div class="testimonial-profile">
-            <div class="testimonial-avatar">JN</div>
-            <div>
-              <h4>Jason Neo</h4>
-              <span>Digital Product Owner</span>
-            </div>
-          </div>
-
-          <p>
-            “Communication was smooth, revisions were fast, and the UI result looked clean like a real startup product.”
-          </p>
-
-          <div class="testimonial-stars">
-            ★ ★ ★ ★ ★
-          </div>
-        </div>
-
-        <div class="testimonial-card glass-card reveal">
-          <div class="testimonial-profile">
-            <div class="testimonial-avatar">SM</div>
-            <div>
-              <h4>Sarah Miller</h4>
-              <span>Creative Brand Manager</span>
-            </div>
-          </div>
-
-          <p>
-            “One of the cleanest portfolio and dashboard design styles we’ve worked with. Minimal, modern, and very professional.”
-          </p>
-
-          <div class="testimonial-stars">
-            ★ ★ ★ ★ ★
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="pricing">
-    <div class="container">
-      <div class="section-title reveal">
-        <h2>Pricing</h2>
-        <p>
-          Flexible pricing packages designed for startups, personal brands, and modern businesses.
-        </p>
-      </div>
-
-      <div class="pricing-grid">
-        <div class="pricing-card glass-card reveal">
-          <h3>Basic</h3>
-          <div class="price">Rp500K</div>
-          <p>Perfect for personal brands, simple landing pages, and modern digital presence.</p>
-
-          <div class="pricing-list">
-            <span>✔ Modern Landing Page Design</span>
-            <span>✔ Responsive Mobile Layout</span>
-            <span>✔ Clean UI Section</span>
-            <span>✔ Basic Scroll Animation</span>
-            <span>✔ 2x Revision</span>
-          </div>
-
-          <a href="#contact" class="btn">Get Started</a>
-        </div>
-
-        <div class="pricing-card glass-card reveal" style="transform:scale(1.03);border-color:rgba(59,130,246,.28);box-shadow:0 0 40px rgba(59,130,246,.12);">
-          <h3>Standard</h3>
-          <div class="price">Rp800K</div>
-          <p>Ideal for startups and businesses that need premium visuals and stronger website experience.</p>
-
-          <div class="pricing-list">
-            <span>✔ Premium Landing Page Website</span>
-            <span>✔ Modern UI/UX Experience</span>
-            <span>✔ Smooth Scroll Animation</span>
-            <span>✔ Responsive All Devices</span>
-            <span>✔ Fast Performance Optimization</span>
-            <span>✔ 4x Revision</span>
-          </div>
-
-          <a href="#contact" class="btn">Get Started</a>
-        </div>
-
-        <div class="pricing-card glass-card reveal">
-          <h3>Premium</h3>
-          <div class="price">Rp1.2JT</div>
-          <p>Complete premium startup experience with modern visuals, interactions, and advanced website sections.</p>
-
-          <div class="pricing-list">
-            <span>✔ Full Premium Landing Page</span>
-            <span>✔ Advanced UI/UX Design</span>
-            <span>✔ Premium Visual Experience</span>
-            <span>✔ Custom Modern Sections</span>
-            <span>✔ Smooth Premium Animation</span>
-            <span>✔ SEO & Speed Optimization</span>
-            <span>✔ Priority Support</span>
-            <span>✔ Unlimited Revision</span>
-          </div>
-
-          <a href="#contact" class="btn">Get Started</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq">
-    <div class="container">
-      <div class="section-title reveal">
-        <h2>Frequently Asked Questions</h2>
-        <p>
-          Everything you might want to know before starting your project.
-        </p>
-      </div>
-
-      <div class="faq-grid">
-        <div class="faq-card glass-card reveal">
-          <h3>Do you also develop the website?</h3>
-          <p>
-            Yes. Besides designing the interface, I can also build responsive modern landing page websites with clean frontend development.
-          </p>
-        </div>
-
-        <div class="faq-card glass-card reveal">
-          <h3>Can I request revisions during the project?</h3>
-          <p>
-            Absolutely. Revisions are included in every package to make sure the final result matches your vision and branding.
-          </p>
-        </div>
-
-        <div class="faq-card glass-card reveal">
-          <h3>How long does a landing page project usually take?</h3>
-          <p>
-            Most landing page projects are completed within a few days depending on the complexity, sections, and revisions needed.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <div class="cta glass-card reveal">
-        <h2>Let’s Build Something Modern Together.</h2>
-
-        <p>
-          Ready to create a premium digital experience for your startup, business, or personal brand? Let’s make it happen.
-        </p>
-
-        <div class="hero-buttons" style="justify-content:center;">
-          <a href="#" class="btn">WhatsApp</a>
-          <a href="#" class="btn secondary-btn">Instagram</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo" style="margin-bottom:20px;">Afif <span>Studio</span></div>
-
-          <p>
-            Modern UI/UX portfolio focused on clean design, premium startup aesthetics, and impactful digital experiences.
-          </p>
-        </div>
+      <div style="padding-left:28px;">
+        <h3 style="margin-bottom:18px; font-family:'Space Grotesk',sans-serif;">Navigation</h3>
 
         <div class="footer-links">
-          <h4>Navigation</h4>
           <a href="#about">About</a>
           <a href="#services">Services</a>
           <a href="#portfolio">Portfolio</a>
-          <a href="#contact">Contact</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
         </div>
+      </div>
+
+      <div style="padding-left:12px;">
+        <h3 style="margin-bottom:18px; font-family:'Space Grotesk',sans-serif;">Social Media</h3>
 
         <div class="footer-links">
-          <h4>Social Media</h4>
-          <a href="#">Instagram</a>
-          <a href="#">Dribbble</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">Email</a>
+          <a href="https://instagram.com" target="_blank">Instagram</a>
+          <a href="https://wa.me" target="_blank">WhatsApp</a>
+          <a href="https://dribbble.com" target="_blank">Dribbble</a>
+          <a href="https://behance.net" target="_blank">Behance</a>
+          <a href="https://github.com" target="_blank">GitHub</a>
         </div>
       </div>
+    </div>
 
-      <div class="footer-bottom">
-        © 2026 Afif Studio. Crafted with modern startup aesthetics.
+    <div class="footer-bottom">
+      <div>
+        © 2026 Afif Studio. Crafted with modern startup aesthetics and clean digital experience.
+      </div>
+
+      <div class="footer-policy">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script>
-    const navLinks = document.querySelectorAll('.nav-links a');
+<script>
+  const reveals = document.querySelectorAll('.reveal');
 
-    navLinks.forEach(link => {
-      link.addEventListener('mousemove', (e) => {
-        const rect = link.getBoundingClientRect();
-        const x = e.clientX - rect.left;
+  const revealOnScroll = () => {
+    reveals.forEach((element) => {
+      const windowHeight = window.innerHeight;
+      const top = element.getBoundingClientRect().top;
 
-        link.style.background = `radial-gradient(circle at ${x}px center, rgba(255,255,255,.08), transparent 65%)`;
-      })
+      if(top < windowHeight - 80){
+        element.classList.add('active');
+      }
+    });
+  };
 
-      link.addEventListener('mouseleave', () => {
-        link.style.background = 'transparent';
-      })
-    })
+  revealOnScroll();
+  window.addEventListener('scroll', revealOnScroll);
 
-    const cards = document.querySelectorAll('.service-card, .testimonial-card, .pricing-card');
+  const interactiveCards = document.querySelectorAll('.service-card, .pricing-card, .testimonial-card');
 
-    cards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+  interactiveCards.forEach((card) => {
+    card.addEventListener('mousemove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
 
-        card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(59,130,246,.12), rgba(255,255,255,.03) 40%)`;
-      })
+      card.style.background = 'radial-gradient(circle at ' + x + 'px ' + y + 'px, rgba(59,130,246,.12), rgba(255,255,255,.03) 40%)';
+    });
 
-      card.addEventListener('mouseleave', () => {
-        card.style.background = 'rgba(255,255,255,0.04)';
-      })
-    })
-
-    const reveals = document.querySelectorAll('.reveal');
-
-    window.addEventListener('scroll', () => {
-      reveals.forEach((el) => {
-        const top = el.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-
-        if(top < windowHeight - 80){
-          el.classList.add('active');
-        }
-      })
-    })
-
-    reveals.forEach((el, index) => {
-      setTimeout(() => {
-        el.classList.add('active');
-      }, index * 120)
-    })
-  </script>
+    card.addEventListener('mouseleave', () => {
+      card.style.background = 'rgba(255,255,255,.04)';
+    });
+  });
+</script>
 
 </body>
 </html>
